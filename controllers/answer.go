@@ -35,3 +35,15 @@ func (c *AnswerController) InsertOnePatientAnswer() {
 	models.InsertPatientAnswers(alst)
 	c.Ctx.WriteString("ok")
 }
+
+func (c *AnswerController) GetLatestAnswer() {
+	qid, _ := c.GetInt64("questionid")
+	pid, _ := c.GetInt64("patientid")
+
+	var a models.Answer
+	a.Patientid = pid
+	a.Questionid = qid
+	a.GetLatestAnswer()
+	c.Data["json"] = &a
+	c.ServeJson()
+}

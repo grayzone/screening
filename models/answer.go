@@ -43,7 +43,24 @@ func InsertPatientAnswers(as []Answer) {
 		if err != nil {
 			log.Println("insert patient answer failed :" + err.Error())
 		}
-
 	}
 	i.Close()
+}
+
+func (a *Answer) GetLatestAnswer() error {
+	o := orm.NewOrm()
+
+	err := o.QueryTable("answer").Filter("Patientid", a.Patientid).Filter("Questionid", a.Questionid).OrderBy("-Updated").One(a)
+	if err == orm.ErrMultiRows {
+		log.Printf("returned Muti Rows Not one , patient id: %d \n", a.Id)
+		//		log.Println(")
+		return err
+	}
+	if err == orm.ErrNoRows {
+		log.Printf("Not row found , Pitient id :  %d \n", a.Id)
+		//		log.Println("" + a.Id)
+		return err
+	}
+	return nil
+
 }

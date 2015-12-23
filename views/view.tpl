@@ -1,5 +1,4 @@
 <script type="text/javascript" src="../static/js/control_view.js"></script>
-
 <div class="container-fluid">
 	<table id="patient" class="table table-striped table-bordered"  cellspacing="0" width="100%">
 		<thead>
@@ -64,23 +63,6 @@
 					
 				</tbody>
 			</table>
-		</div>
-	</div>
-</div>
-<div class="modal fade" id="patientmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-			</div>
-			<div class="modal-body">
-				...
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
 		</div>
 	</div>
 </div>

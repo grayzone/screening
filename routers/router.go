@@ -11,6 +11,7 @@ func init() {
 	beego.Router("/new", &controllers.NewController{})
 	beego.Router("/view", &controllers.ViewController{})
 	beego.Router("/report", &controllers.ReportController{})
+	beego.Router("/patient", &controllers.PatientController{})
 
 	beego.Router("/insertpatient", &controllers.PatientController{}, "POST:InsertOnePatient")
 	beego.Router("/getpatients", &controllers.PatientController{}, "GET:GetPatients")
@@ -25,4 +26,6 @@ func init() {
 	beego.Router("/getquestionsbygroup", &controllers.QuestionController{}, "POST:GetQuestionsByGroup")
 
 	beego.Router("/insertpatientanswer", &controllers.AnswerController{}, "POST:InsertOnePatientAnswer")
+	beego.Router("/getlastestanswer", &controllers.AnswerController{}, "POST:GetLatestAnswer")
+
 }

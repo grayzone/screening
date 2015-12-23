@@ -1,6 +1,4 @@
 $(function() {
-
-
     var patienttable = $('#patient').DataTable({
         stateSave: true,
         "ajax": {
@@ -23,35 +21,15 @@ $(function() {
             data: 6
         }, {
             "data": null,
-            "defaultContent": "<button  class='btn btn-link' data-toggle='modal' data-target='#patientmodal'>More</button>"
+            "defaultContent": "<button  class='btn btn-link'>More</button>"
         }]
 
     });
 
     $('#patient tbody').on('click', 'button', function() {
         var pdata = patienttable.row($(this).parents('tr')).data();
-        $.ajax({
-            url: '/getpatientbyid',
-            type: 'POST',
-            async: false,
-            data: {
-                "id": pdata[0]
-            },
-        }).done(function(output) {
-            var result = JSON.stringify(output);
-            //           alert(result);
-        }).fail(function() {
-            console.log("error");
-            alert("error");
-        }).always(function() {
-            console.log("complete");
-        });
+        $.cookie("patientid", pdata[0]);
+
+        window.location.href = "/patient";
     });
-
-
-
-
-
-
-
 });

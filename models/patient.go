@@ -58,14 +58,17 @@ func (p Patient) GetPatients() []orm.ParamsList {
 	return lists
 }
 
-func (p *Patient) GetPatient(id string) {
+func (p *Patient) GetPatient() error {
 	o := orm.NewOrm()
 
-	err := o.QueryTable("patient").Filter("Id", id).One(p)
+	err := o.QueryTable("patient").Filter("Id", p.Id).One(p)
 	if err == orm.ErrMultiRows {
-		log.Println("returned Muti Rows Not one : patient id " + id)
+		log.Printf("returned Muti Rows Not one , patient id :%d\n", p.Id)
+		return err
 	}
 	if err == orm.ErrNoRows {
-		log.Println("Not row found , Pitient id : " + id)
+		log.Printf("Not row found , Pitient id : %d\n", p.Id)
+		return err
 	}
+	return nil
 }

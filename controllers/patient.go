@@ -11,6 +11,11 @@ type PatientController struct {
 	beego.Controller
 }
 
+func (c *PatientController) Get() {
+	c.Layout = "layout.tpl"
+	c.TplNames = "patient.tpl"
+}
+
 func (c *PatientController) InsertOnePatient() {
 	var p models.Patient
 	age, _ := c.GetInt32("age")
@@ -41,7 +46,20 @@ func (c *PatientController) GetPatientByID() {
 	beego.Debug(c.GetString("id"))
 
 	var p models.Patient
-	p.GetPatient(c.GetString("id"))
+	pid, _ := c.GetInt64("id")
+	p.Id = pid
+	p.GetPatient()
+	c.Data["json"] = &p
+	c.ServeJson()
+}
+
+func (c *PatientController) GetPatientInfo() {
+	beego.Debug(c.Ctx.Input.Param(":id"))
+
+	var p models.Patient
+	pid, _ := strconv.ParseInt(c.Ctx.Input.Param(":id"), 10, 64)
+	p.Id = pid
+	p.GetPatient()
 	c.Data["json"] = &p
 	c.ServeJson()
 }

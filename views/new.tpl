@@ -1,5 +1,7 @@
 <script type="text/javascript" src="../static/js/func_new.js"></script>
 <script type="text/javascript" src="../static/js/control_new.js"></script>
+
+
 <div class="panel panel-primary" id="divbasic">
   <div class="panel-heading">Patient Basic Information</div>
   <div class="panel-body">
