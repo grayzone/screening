@@ -1,5 +1,5 @@
 function add_question_into_section(groupid, questionid, content) {
-	var component = '<li class="list-group-item"><div class="row"><label class="control-label  col-xs-10" for="input_patient_question_' + questionid + '">' + content + '</label><div class="col-xs-2"><div class="btn-group" data-toggle="buttons"><label class="btn btn-default"><input type="radio" name="inlineRadioOptions_' + questionid + '" id="inlineradio_' + questionid + '_yes" value="1">Yes</label><label class="btn btn-default active"><input type="radio" name="inlineRadioOptions_' + questionid + '" id="inlineradio_' + questionid + '_no" value="0" checked="checked" readonly>No</label></div></div></div></li>';
+	var component = '<li class="list-group-item"><div class="row"><label class="control-label  col-xs-10" for="input_patient_question_' + questionid + '">' + content + '</label><div class="col-xs-2"><div class="btn-group" data-toggle="buttons"><label class="btn btn-default" id="label_radio_quesiton_' + questionid + '_yes"><input type="radio" name="inlineRadioOptions_' + questionid + '" id="inlineradio_' + questionid + '_yes" value="1">Yes</label><label class="btn btn-default" id="label_radio_quesiton_' + questionid + '_no"><input type="radio" name="inlineRadioOptions_' + questionid + '" id="inlineradio_' + questionid + '_no" value="0" checked="checked">No</label></div></div></div></li>';
 	$("#ul_patient_question_" + groupid).append(component);
 }
 
@@ -30,7 +30,7 @@ function fill_patient_info(patientinfo) {
 
 }
 
-function get_patient_latest_answers(patientid, questionid){
+function get_patient_latest_answers(patientid, questionid) {
 	var result = null;
 	$.ajax({
 		type: "POST",
@@ -48,6 +48,20 @@ function get_patient_latest_answers(patientid, questionid){
 
 }
 
+function update_answer_in_patient_page(questionid, answer) {
+	if (answer == 1) {
+
+		$("#label_radio_quesiton_" + questionid + "_yes").addClass('active');
+		$("#label_radio_quesiton_" + questionid + "_no").attr("disabled", true);
+
+	} else {
+		$("#label_radio_quesiton_" + questionid + "_yes").attr("disabled", true);
+		$("#label_radio_quesiton_" + questionid + "_no").addClass('active');
+		var s = "1";
+	}
+
+}
+
 function init_patient_page() {
 	var patientid = $.cookie("patientid");
 	var patientinfo = get_patient_info(patientid);
@@ -59,14 +73,18 @@ function init_patient_page() {
 	}
 
 	// update the radio value
-	var result = [];
+	var result = {};
 	questionlist = get_question_list();
 	if (questionlist != null) {
-        $.each(questionlist, function(index, value) {
-            var questionid = value[0];
-            var answer = get_patient_latest_answers(patientid,questionid);
-            result[questionid] = answer["Answer"];
-        });
-    }
-    
+		$.each(questionlist, function(index, value) {
+			var questionid = value[0];
+			var answer = get_patient_latest_answers(patientid, questionid);
+			result[questionid] = answer["Answer"];
+		});
+	}
+
+	$.each(result, function(index, value) {
+		update_answer_in_patient_page(index,value);
+	});
+
 }
