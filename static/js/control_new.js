@@ -12,7 +12,7 @@ $(document).ready(function() {
             alert("invalid patient information.");
             return;
         }
-        var result = get_all_answers();
+        var result = get_all_answers_from_new_page();
         var s = "";
         $.each(result, function(index, value) {
             var questionid = index;

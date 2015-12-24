@@ -1,6 +1,5 @@
 <script type="text/javascript" src="../static/js/func_patient.js"></script>
 <script type="text/javascript" src="../static/js/control_patient.js"></script>
-
 <div class="panel panel-primary" id="div_patient_basic">
 	<div class="panel-heading">Patient Basic Information</div>
 	<div class="panel-body">
@@ -52,5 +51,71 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="panel panel-info" id="div_patient_question_1">
+	<div class="panel-heading">1. Daily Symptoms</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<ul class="list-group" id="ul_patient_question_1">
+			</ul>
+			
+		</div>
+	</div>
+</div>
+<div class="panel panel-info" id="div_patient_question_2">
+	<div class="panel-heading">2. Clinical Symptoms</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<ul class="list-group" id="ul_patient_question_2">
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="panel panel-info" id="div_patient_question_3">
+	<div class="panel-heading">3. Diseases History</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<ul class="list-group" id="ul_patient_question_3">
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default" id="div_patient_question_4">
+	<div class="panel-heading">4. Health Checkup</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<ul class="list-group" id="ul_patient_question_4">
+				
+			</ul>
+			
+		</div>
+		
+	</div>
+</div>
+<div class="panel panel-default"  id="div_patient_question_5">
+	<div class="panel-heading">5. Clinical Laboratory</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<ul class="list-group" id="ul_patient_question_5">
+				
+			</ul>
+			
+		</div>
+		
+	</div>
+</div>
+<div class="panel panel-default" id="div_patient_question_6">
+	<div class="panel-heading">6. Radiology Report</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<ul class="list-group" id="ul_patient_question_6">
+				
+			</ul>
+			
+		</div>
+		
 	</div>
 </div>
