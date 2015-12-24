@@ -43,21 +43,10 @@ func (c *PatientController) GetPatients() {
 
 func (c *PatientController) GetPatientByID() {
 
-	beego.Debug(c.GetString("id"))
+	//	beego.Debug(c.GetString("patientid"))
 
 	var p models.Patient
-	pid, _ := c.GetInt64("id")
-	p.Id = pid
-	p.GetPatient()
-	c.Data["json"] = &p
-	c.ServeJson()
-}
-
-func (c *PatientController) GetPatientInfo() {
-	beego.Debug(c.Ctx.Input.Param(":id"))
-
-	var p models.Patient
-	pid, _ := strconv.ParseInt(c.Ctx.Input.Param(":id"), 10, 64)
+	pid, _ := c.GetInt64("patientid")
 	p.Id = pid
 	p.GetPatient()
 	c.Data["json"] = &p

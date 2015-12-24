@@ -1,6 +1,5 @@
 $(function() {
-
-	alert($.cookie("patientid"));
+	init_patient_page();
 
 
 });
