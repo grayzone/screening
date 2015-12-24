@@ -30,8 +30,22 @@ function fill_patient_info(patientinfo) {
 
 }
 
-function get_patient_latest_answers(patientid){
-	
+function get_patient_latest_answers(patientid, questionid){
+	var result = null;
+	$.ajax({
+		type: "POST",
+		async: false,
+		url: "/getlastestanswer",
+		data: {
+			"patientid": patientid,
+			"questionid": questionid,
+		},
+		success: function(r) {
+			result = r;
+		}
+	});
+	return result;
+
 }
 
 function init_patient_page() {
@@ -45,6 +59,14 @@ function init_patient_page() {
 	}
 
 	// update the radio value
-
-
+	var result = [];
+	questionlist = get_question_list();
+	if (questionlist != null) {
+        $.each(questionlist, function(index, value) {
+            var questionid = value[0];
+            var answer = get_patient_latest_answers(patientid,questionid);
+            result[questionid] = answer["Answer"];
+        });
+    }
+    
 }
