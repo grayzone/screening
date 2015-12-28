@@ -1,0 +1,14 @@
+web:
+        build: .
+        command: sleep 10000 && go/src/github.com/grayzone/screening/screening
+        ports:
+        - "80:8080"
+        links:
+        - postgresql
+postgresql:
+        image: grayzone/postgresql
+        environment: 
+                DB_PASS: 123456
+                DB_USER: screening
+                DB_NAME: screening
+                
