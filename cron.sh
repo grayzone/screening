@@ -12,7 +12,7 @@ docker pull grayzone/screening
 
 
 # launch
-docker run -d -p 80:8080 --name screening grayzone/screening
+docker run -d -it -p 80:8080 --name screening grayzone/screening
 
 
 
