@@ -10,13 +10,11 @@ import (
 )
 
 func init() {
-
-	beego.Debug(os.Args)
 	if len(os.Args) > 1 {
-		beego.RunMode = "pro"
-		beego.Info("second args : " + os.Args[1])
+		beego.RunMode = "prod"
+		beego.Info("In mode: " + os.Args[1])
 	} else {
-		beego.Info("first args : " + os.Args[0])
+		beego.Info("In mode:  dev")
 	}
 
 	orm.Debug = false
