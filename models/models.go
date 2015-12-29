@@ -1,8 +1,6 @@
 package models
 
 import (
-	"os"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 
@@ -10,14 +8,15 @@ import (
 )
 
 func init() {
-	beego.Debug(os.Args)
-	if len(os.Args) > 1 {
-		beego.RunMode = "pro"
-		beego.Info("second args : " + os.Args[1])
-	} else {
-		beego.Info("first args : " + os.Args[0])
-	}
-
+	/*
+		beego.Debug(os.Args)
+		if len(os.Args) > 1 {
+			beego.RunMode = "pro"
+			beego.Info("second args : " + os.Args[1])
+		} else {
+			beego.Info("first args : " + os.Args[0])
+		}
+	*/
 	orm.Debug = false
 	orm.RegisterDriver("postgres", orm.DR_Postgres)
 	connstr := "user=screening password=123456 dbname=screening sslmode=disable host=" + beego.AppConfig.String("pgsqlurls")
