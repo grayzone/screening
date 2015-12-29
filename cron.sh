@@ -9,10 +9,10 @@ docker rmi -f $(docker images --filter dangling=true -q)
 
 #pull the latest image
 docker pull grayzone/screening
-
+docker pull grayzone/postgresql
 
 # launch
-docker run -d -it -p 80:8080 --name screening grayzone/screening
+docker-compose up -d
 
 
 
