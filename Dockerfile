@@ -14,7 +14,7 @@ RUN rm -rf /go/src/github.com/grayzone/screening/routers
 RUN rm -rf /go/src/github.com/grayzone/screening/tests
 RUN rm -rf /go/src/github.com/grayzone/screening/main.go
 
-EXPOSE 8081 8080
+EXPOSE 8080
 
 ENTRYPOINT ["/go/src/github.com/grayzone/screening/screening"]
 

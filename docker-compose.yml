@@ -1,6 +1,6 @@
 web:
         build: .
-        command: sleep 10000 && go/src/github.com/grayzone/screening/screening
+        command: sleep 10000 && /go/src/github.com/grayzone/screening/screening 1
         ports:
         - "80:8080"
         links:
@@ -11,4 +11,3 @@ postgresql:
                 DB_PASS: 123456
                 DB_USER: screening
                 DB_NAME: screening
-                
