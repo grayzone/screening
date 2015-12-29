@@ -33,7 +33,7 @@ echo "@@. Wait for db service is ready."
 sleep 10
 
 echo "@@. Create web container."
-docker run --name screening --link postgresql -d -p 80:8080 screening --entrypoint="prod"
+docker run --name screening --link postgresql -d -p 80:8080 screening --entrypoint=prod
 
 # crontab script
 # 0 8-18 * * * /home/workspace/go/src/github.com/grayzone/screening/cron_prod.sh > /tmp/logs/screening_$(date +\%Y\%m\%d_\%H\%M\%S).log 2>&1 &
