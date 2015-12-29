@@ -1,25 +1,39 @@
 #!/bin/bash
 
-echo "1. Delete all the containers"
-docker rm -f $(docker ps -a -q)
+echo "@@. Delete all the containers"
+docker ps -a -q | while read line 
+do
+	echo "remove container: ${line}"
+	docker rm -f ${line}
+done
 
-echo "2. Delete untagged images"
-docker rmi -f $(docker images --filter dangling=true -q)
+echo "@@. Delete untagged images"
+docker images --filter dangling=true -q | while read line
+do 
+	echo "remove image : ${line}"
+	docker rmi -f ${line}
+done
 
-
-echo "3. Pull the latest images"
+echo "@@. Pull the latest images"
 docker pull grayzone/screening
 docker pull grayzone/postgresql
 
-echo "4. Create db container."
-docker run --name postgresql -d -v /var/lib/pgsql/data:/var/lib/pgsql/data grayzone/postgresql
+echo "@@. Create db container."
 
-echo "sleep 5 seconds to wait for db service is ready."
-sleep 5
+# add volume
+# docker run --name postgresql -d -v /var/lib/pgsql:/var/lib/pgsql grayzone/postgresql
 
-echo "5. Create web container."
-docker run --name screening --link postgresql -d -p 80:8080 grayzone/screening
+# init DB in command.
+# docker run --name postgresql -d -e 'DB_USER=screening' -e 'DB_PASS=123456' -e 'DB_NAME=screening'  grayzone/postgresql
 
+
+
+echo "@@. Wait for db service is ready."
+sleep 10
+
+echo "@@. Create web container."
+# docker run --name screening --link postgresql -d -p 80:8080 grayzone/screening
+docker run --name screening --entrypoint "/go/src/github.com/grayzone/screening/screening 1" -d -p 80:8080 grayzone/screening 
 
 
 
