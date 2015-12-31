@@ -11,8 +11,12 @@ RUN go build github.com/grayzone/screening
 RUN rm -rf /go/src/github.com/grayzone/screening/.git
 RUN rm -rf /go/src/github.com/grayzone/screening/controllers
 RUN rm -rf /go/src/github.com/grayzone/screening/routers
+RUN rm -rf /go/src/github.com/grayzone/screening/models
 RUN rm -rf /go/src/github.com/grayzone/screening/tests
 RUN rm -rf /go/src/github.com/grayzone/screening/main.go
+
+RUN rm -rf /go/src/github.com/grayzone/screening/Dockerfile
+RUN rm -rf /go/src/github.com/grayzone/screening/docker-compose.yml
 
 EXPOSE 8080
 
