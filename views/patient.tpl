@@ -119,3 +119,39 @@
 		
 	</div>
 </div>
+<div class="panel panel-info" id="div_patient_result">
+	<div class="panel-heading">Medical Result</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<div class="col-xs-2">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon-stage">Stage:</span>
+					<select id="select_patient_stage" class="form-control">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3A</option>
+						<option value="4">3B</option>
+						<option value="5">3C</option>
+						<option value="6">4A</option>
+						<option value="7">4B</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix" style="margin-bottom: 10px;"></div>
+		<div class="container-fluid">
+			<div class="col-xs-12">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon-summary">Summary:</span>
+					<textarea id="textarea_patient_summary" class="form-control"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="container-fluid">
+			<button id="btn_patient_save" name="btn_patient_save" class="btn btn-default">Save</button>
+		</div>
+	</div>
+</div>

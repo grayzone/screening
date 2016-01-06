@@ -87,4 +87,49 @@ function init_patient_page() {
 		update_answer_in_patient_page(index,value);
 	});
 
+	// show patient diagnosis
+	var diagnosis = get_patient_diagnosis();
+	fill_patient_diagnosis(diagnosis);
+}
+
+function save_patient_diagnosis(){
+var result = null;
+	$.ajax({
+		type: "POST",
+		async: false,
+		url: "/savediagnosis",
+		data: {
+			"patientid": $.cookie("patientid"),
+			"stage": $("#select_patient_stage").val(),
+			"summary": $("#textarea_patient_summary").val(),
+		},
+		success: function(r) {
+			result = r;
+		}
+	});
+	return result;
+
+
+}
+
+function get_patient_diagnosis(){
+	var result = null;
+	$.ajax({
+		type: "POST",
+		async: false,
+		url: "/getdiagnosis",
+		data: {
+			"patientid": $.cookie("patientid"),
+		},
+		success: function(r) {
+			result = r;
+		}
+	});
+	return result;
+}
+
+function fill_patient_diagnosis(diagnosis) {
+	$("#select_patient_stage").val(diagnosis["Stage"]);
+	$("#textarea_patient_summary").val(diagnosis["Summary"]);
+
 }

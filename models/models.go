@@ -22,7 +22,7 @@ func init() {
 	connstr := "user=screening password=123456 dbname=screening sslmode=disable host=" + beego.AppConfig.String("pgsqlurls")
 	orm.RegisterDataBase("default", "postgres", connstr)
 
-	orm.RegisterModel(new(Patient), new(Training), new(Question), new(Answer))
+	orm.RegisterModel(new(Patient), new(Training), new(Question), new(Answer), new(Diagnosis))
 
 	createTables()
 }
