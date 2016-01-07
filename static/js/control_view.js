@@ -18,8 +18,6 @@ $(function() {
         }, {
             data: 5
         }, {
-            data: 6
-        }, {
             "data": null,
             "defaultContent": "<button  class='btn btn-link'>More</button>"
         }]

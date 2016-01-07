@@ -9,17 +9,15 @@ import (
 )
 
 type Patient struct {
-	Id        int64  `orm:"pk;auto"`
-	Name      string `orm:"unique"`
-	Age       uint32
-	Gender    uint32 // '0:male, 1: female'
-	Istrained bool   `orm:"default(false)"`
-	City      string
-	Height    float64
-	Weight    float64
-	Stage     uint32
-	Created   time.Time `orm:"auto_now_add;type(datetime)"`
-	Updated   time.Time `orm:"auto_now;type(datetime)"`
+	Id      int64  `orm:"pk;auto"`
+	Name    string `orm:"unique"`
+	Age     uint32
+	Gender  uint32 // '0:male, 1: female'
+	City    string
+	Height  float64
+	Weight  float64
+	Created time.Time `orm:"auto_now_add;type(datetime)"`
+	Updated time.Time `orm:"auto_now;type(datetime)"`
 }
 
 func (p Patient) Get() error {
@@ -54,7 +52,7 @@ func (p Patient) GetPatients() []orm.ParamsList {
 	//	o.QueryTable("patient").OrderBy("Id").All(&result, "Id", "Name", "Age", "Gender", "Istrained")
 	//	o.QueryTable("patient").OrderBy("Id").All(&result)
 
-	o.QueryTable("patient").OrderBy("Id").ValuesList(&lists, "Id", "Name", "Age", "Gender", "Istrained", "Created", "Updated")
+	o.QueryTable("patient").OrderBy("Id").ValuesList(&lists, "Id", "Name", "Age", "Gender", "city")
 	return lists
 }
 

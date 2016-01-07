@@ -37,6 +37,20 @@ func (c *PatientController) GetPatients() {
 
 	var p models.Patient
 	ps := p.GetPatients()
+	// get stage
+	for i := range ps {
+		var r models.Result
+		r.Patientid = ps[i][0].(int64)
+		r.Get()
+		ps[i] = append(ps[i], r.Stage)
+
+		if ps[i][3].(uint64) == 0 {
+			ps[i][3] = "Male"
+		} else {
+			ps[i][3] = "Female"
+		}
+	}
+
 	c.Data["json"] = &ps
 	c.ServeJson()
 }

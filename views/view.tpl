@@ -7,9 +7,8 @@
 				<th>Name</th>
 				<th>Age</th>
 				<th>Gender</th>
-				<th>Istrained</th>
-				<th>Created</th>
-				<th>Updated</th>
+				<th>City</th>
+				<th>Stage</th>
 				<th>Details</th>
 			</tr>
 		</thead>
