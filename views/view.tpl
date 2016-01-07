@@ -1,6 +1,6 @@
 <script type="text/javascript" src="../static/js/control_view.js"></script>
 <div class="container-fluid">
-	<table id="patient" class="table table-striped table-bordered"  cellspacing="0" width="100%">
+	<table id="patient" class="table table-bordered"  cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -20,12 +20,12 @@
 		<div class="container-fluid">
 			<table id="stage" class="table table-bordered"  cellspacing="0" width="100%">
 				<tbody>
-					<tr>
+					<tr class="info">
 						<td>1</td>
 						<td>There is a single tumor (any size) that has not grown into any blood
 						vessels. The cancer has not spread to nearby lymph nodes or distant sites.</td>
 					</tr>
-					<tr class="active">
+					<tr class="info">
 						<td>2</td>
 						<td>Either there is a single tumor (any size) that has grown into blood
 							vessels, OR there are several tumors, and all are 5 cm (2 inches) or less across. The cancer

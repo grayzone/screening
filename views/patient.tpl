@@ -130,11 +130,11 @@
 						<option value="0">0</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
-						<option value="3">3A</option>
-						<option value="4">3B</option>
-						<option value="5">3C</option>
-						<option value="6">4A</option>
-						<option value="7">4B</option>
+						<option value="3A">3A</option>
+						<option value="3B">3B</option>
+						<option value="3C">3C</option>
+						<option value="4A">4A</option>
+						<option value="4B">4B</option>
 					</select>
 				</div>
 			</div>
