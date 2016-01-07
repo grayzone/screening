@@ -87,21 +87,21 @@ function init_patient_page() {
 		update_answer_in_patient_page(index,value);
 	});
 
-	// show patient diagnosis
-	var diagnosis = get_patient_diagnosis();
-	fill_patient_diagnosis(diagnosis);
+	// show patient result
+	var result = get_patient_result();
+	fill_patient_result(result);
 }
 
-function save_patient_diagnosis(){
+function save_patient_result(){
 var result = null;
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "/savediagnosis",
+		url: "/saveresult",
 		data: {
 			"patientid": $.cookie("patientid"),
 			"stage": $("#select_patient_stage").val(),
-			"summary": $("#textarea_patient_summary").val(),
+			"comment": $("#textarea_patient_comment").val(),
 		},
 		success: function(r) {
 			result = r;
@@ -112,12 +112,12 @@ var result = null;
 
 }
 
-function get_patient_diagnosis(){
+function get_patient_result(){
 	var result = null;
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "/getdiagnosis",
+		url: "/getresult",
 		data: {
 			"patientid": $.cookie("patientid"),
 		},
@@ -128,8 +128,8 @@ function get_patient_diagnosis(){
 	return result;
 }
 
-function fill_patient_diagnosis(diagnosis) {
-	$("#select_patient_stage").val(diagnosis["Stage"]);
-	$("#textarea_patient_summary").val(diagnosis["Summary"]);
+function fill_patient_result(result) {
+	$("#select_patient_stage").val(result["Stage"]);
+	$("#textarea_patient_comment").val(result["Comment"]);
 
 }

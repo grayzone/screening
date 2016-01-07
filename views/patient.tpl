@@ -120,7 +120,7 @@
 	</div>
 </div>
 <div class="panel panel-info" id="div_patient_result">
-	<div class="panel-heading">Medical Result</div>
+	<div class="panel-heading">Result</div>
 	<div class="panel-body">
 		<div class="container-fluid">
 			<div class="col-xs-2">
@@ -143,8 +143,8 @@
 		<div class="container-fluid">
 			<div class="col-xs-12">
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon-summary">Summary:</span>
-					<textarea id="textarea_patient_summary" class="form-control"></textarea>
+					<span class="input-group-addon" id="basic-addon-comment">Comment:</span>
+					<textarea id="textarea_patient_comment" class="form-control"></textarea>
 				</div>
 			</div>
 		</div>

@@ -28,7 +28,7 @@ func init() {
 	beego.Router("/insertpatientanswer", &controllers.AnswerController{}, "POST:InsertOnePatientAnswer")
 	beego.Router("/getlastestanswer", &controllers.AnswerController{}, "POST:GetLatestAnswer")
 
-	beego.Router("/savediagnosis", &controllers.DiagnosisController{}, "POST:SaveDiagnosis")
-	beego.Router("/getdiagnosis", &controllers.DiagnosisController{}, "POST:GetDiagnosis")
+	beego.Router("/saveresult", &controllers.ResultController{}, "POST:SaveResult")
+	beego.Router("/getresult", &controllers.ResultController{}, "POST:GetResult")
 
 }

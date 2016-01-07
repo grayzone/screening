@@ -6,18 +6,18 @@ import (
 	"github.com/grayzone/screening/models"
 )
 
-type DiagnosisController struct {
+type ResultController struct {
 	beego.Controller
 }
 
-func (c *DiagnosisController) SaveDiagnosis() {
-	var d models.Diagnosis
+func (c *ResultController) SaveResult() {
+	var d models.Result
 	d.Patientid, _ = c.GetInt64("patientid")
 
 	err := d.Get()
 	if err != nil {
 		d.Stage = c.GetString("stage")
-		d.Summary = c.GetString("summary")
+		d.Comment = c.GetString("comment")
 
 		err = d.Insert()
 		if err != nil {
@@ -26,7 +26,7 @@ func (c *DiagnosisController) SaveDiagnosis() {
 		}
 	} else {
 		d.Stage = c.GetString("stage")
-		d.Summary = c.GetString("summary")
+		d.Comment = c.GetString("comment")
 		err = d.Update()
 		if err != nil {
 			c.Ctx.WriteString(err.Error())
@@ -36,10 +36,10 @@ func (c *DiagnosisController) SaveDiagnosis() {
 	c.Ctx.WriteString("ok")
 }
 
-func (c *DiagnosisController) GetDiagnosis() {
-	var d models.Diagnosis
+func (c *ResultController) GetResult() {
+	var d models.Result
 	d.Patientid, _ = c.GetInt64("patientid")
-	d.GetDiagnosis()
+	d.GetResult()
 	c.Data["json"] = &d
 	c.ServeJson()
 }

@@ -8,54 +8,54 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type Diagnosis struct {
+type Result struct {
 	Id        int64 `orm:"pk;auto"`
 	Patientid int64 `orm:"unique"`
 	Stage     string
-	Summary   string
+	Comment   string
 	Created   time.Time `orm:"auto_now_add;type(datetime)"`
 	Updated   time.Time `orm:"auto_now;type(datetime)"`
 }
 
-func (d *Diagnosis) Get() error {
+func (r *Result) Get() error {
 	o := orm.NewOrm()
-	err := o.Read(d, "Patientid")
+	err := o.Read(r, "Patientid")
 	return err
 }
 
-func (d *Diagnosis) Insert() error {
+func (r *Result) Insert() error {
 	o := orm.NewOrm()
 	o.Begin()
-	id, err := o.Insert(d)
+	id, err := o.Insert(r)
 	if err != nil {
 		log.Println(err.Error())
 		o.Rollback()
 		return err
 	} else {
-		d.Id = id
+		r.Id = id
 	}
 	o.Commit()
 	return nil
 }
 
-func (d *Diagnosis) Update() error {
+func (r *Result) Update() error {
 	o := orm.NewOrm()
-	d.Updated = time.Now()
-	_, err := o.Update(d, "Stage", "Summary", "Updated")
+	r.Updated = time.Now()
+	_, err := o.Update(r, "Stage", "Comment", "Updated")
 	return err
 }
 
-func (d *Diagnosis) GetDiagnosis() error {
+func (r *Result) GetResult() error {
 	o := orm.NewOrm()
 
-	err := o.QueryTable("diagnosis").Filter("Patientid", d.Patientid).One(d)
+	err := o.QueryTable("result").Filter("Patientid", r.Patientid).One(r)
 	if err == orm.ErrMultiRows {
-		log.Printf("returned Muti Rows Not one , patient id: %d \n", d.Id)
+		log.Printf("returned Muti Rows Not one , patient id: %d \n", r.Id)
 		//		log.Println(")
 		return err
 	}
 	if err == orm.ErrNoRows {
-		log.Printf("Not row found , Pitient id :  %d \n", d.Id)
+		log.Printf("Not row found , Pitient id :  %d \n", r.Id)
 		//		log.Println("" + a.Id)
 		return err
 	}
