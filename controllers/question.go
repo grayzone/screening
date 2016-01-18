@@ -29,7 +29,8 @@ func (c *QuestionController) InsertOneQuestion() {
 func (c *QuestionController) RemoveOneQuestion() {
 	var q models.Question
 	q.Id, _ = c.GetInt64("questionid")
-	err := q.SetDeleted()
+	//	err := q.SetDeleted()
+	err := q.Delete()
 	if err != nil {
 		c.Ctx.WriteString("failed")
 	} else {

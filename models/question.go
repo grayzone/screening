@@ -40,6 +40,12 @@ func (q *Question) SetDeleted() error {
 	return err
 }
 
+func (q *Question) Delete() error {
+	o := orm.NewOrm()
+	_, err := o.Delete(q)
+	return err
+}
+
 func (q *Question) UpdateContent() error {
 	o := orm.NewOrm()
 	_, err := o.Update(q, "Content")
