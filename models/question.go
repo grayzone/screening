@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/astaxie/beego/orm"
-	_ "github.com/lib/pq"
+
 )
 
 type Question struct {
