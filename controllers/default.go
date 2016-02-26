@@ -12,7 +12,7 @@ type MainController struct {
 
 func (c *MainController) Get() {
 	c.Layout = "layout.tpl"
-	c.TplNames = "list.tpl"
+	c.TplName = "list.tpl"
 }
 
 type NewController struct {
@@ -21,7 +21,7 @@ type NewController struct {
 
 func (c *NewController) Get() {
 	c.Layout = "layout.tpl"
-	c.TplNames = "new.tpl"
+	c.TplName = "new.tpl"
 }
 
 type ViewController struct {
@@ -30,7 +30,7 @@ type ViewController struct {
 
 func (c *ViewController) Get() {
 	c.Layout = "layout.tpl"
-	c.TplNames = "view.tpl"
+	c.TplName = "view.tpl"
 }
 
 type ListController struct {
@@ -39,7 +39,7 @@ type ListController struct {
 
 func (c *ListController) Get() {
 	c.Layout = "layout.tpl"
-	c.TplNames = "list.tpl"
+	c.TplName = "list.tpl"
 }
 
 type ReportController struct {
@@ -48,7 +48,7 @@ type ReportController struct {
 
 func (c *ReportController) Get() {
 	c.Layout = "layout.tpl"
-	c.TplNames = "report.tpl"
+	c.TplName = "report.tpl"
 }
 
 type TrainingController struct {
@@ -60,5 +60,5 @@ func (c *TrainingController) GetTrainings() {
 	var t models.Training
 	ps := t.GetTrainings()
 	c.Data["json"] = &ps
-	c.ServeJson()
+	c.ServeJSON()
 }

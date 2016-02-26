@@ -55,7 +55,7 @@ func (c *QuestionController) GetQuestions() {
 	var q models.Question
 	ps := q.GetQuestions()
 	c.Data["json"] = &ps
-	c.ServeJson()
+	c.ServeJSON()
 }
 
 func (c *QuestionController) GetQuestionsByGroup() {
@@ -65,5 +65,5 @@ func (c *QuestionController) GetQuestionsByGroup() {
 	q.Groupid = uint32(t)
 	ps := q.GetQuestionsByGroup()
 	c.Data["json"] = &ps
-	c.ServeJson()
+	c.ServeJSON()
 }

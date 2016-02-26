@@ -45,5 +45,6 @@ func (c *AnswerController) GetLatestAnswer() {
 	a.Questionid = qid
 	a.GetLatestAnswer()
 	c.Data["json"] = &a
-	c.ServeJson()
+
+	c.ServeJSON()
 }

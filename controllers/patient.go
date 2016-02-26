@@ -13,7 +13,7 @@ type PatientController struct {
 
 func (c *PatientController) Get() {
 	c.Layout = "layout.tpl"
-	c.TplNames = "patient.tpl"
+	c.TplName = "patient.tpl"
 }
 
 func (c *PatientController) InsertOnePatient() {
@@ -52,7 +52,7 @@ func (c *PatientController) GetPatients() {
 	}
 
 	c.Data["json"] = &ps
-	c.ServeJson()
+	c.ServeJSON()
 }
 
 func (c *PatientController) GetPatientByID() {
@@ -64,5 +64,5 @@ func (c *PatientController) GetPatientByID() {
 	p.Id = pid
 	p.GetPatient()
 	c.Data["json"] = &p
-	c.ServeJson()
+	c.ServeJSON()
 }

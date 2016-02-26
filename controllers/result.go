@@ -41,5 +41,5 @@ func (c *ResultController) GetResult() {
 	d.Patientid, _ = c.GetInt64("patientid")
 	d.GetResult()
 	c.Data["json"] = &d
-	c.ServeJson()
+	c.ServeJSON()
 }

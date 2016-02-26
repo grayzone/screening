@@ -25,8 +25,8 @@ function fill_patient_info(patientinfo) {
 	$("#input_patient_age").val(patientinfo["Age"]);
 	$("#select_patient_gender").val(patientinfo["Gender"]);
 	$("#input_patient_city").val(patientinfo["City"]);
-	$("#input_patient_height").val(patientinfo["Height"]);
-	$("#input_patient_weight").val(patientinfo["Weight"]);
+	$("#input_patient_height").val(patientinfo["Height"] + " (cm)");
+	$("#input_patient_weight").val(patientinfo["Weight"] + " (kg)");
 
 }
 

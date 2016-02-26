@@ -11,14 +11,14 @@ import (
 
 func init() {
 	if len(os.Args) > 1 {
-		beego.RunMode = "pro"
-		beego.Info("In mode: pro, " + os.Args[1])
+		beego.BConfig.RunMode = "prod"
+		beego.Info("In mode: prod, " + os.Args[1])
 	} else {
 		beego.Info("In mode:  dev")
 	}
 
 	orm.Debug = false
-	orm.RegisterDriver("postgres", orm.DR_Postgres)
+	orm.RegisterDriver("postgres", orm.DRPostgres)
 	connstr := "user=screening password=123456 dbname=screening sslmode=disable host=" + beego.AppConfig.String("pgsqlurls")
 	orm.RegisterDataBase("default", "postgres", connstr)
 
