@@ -2,6 +2,13 @@ FROM grayzone/beego
 
 MAINTAINER Albert Wang
 
+
+# Install Database libs
+RUN go get -u -v github.com/lib/pq
+RUN go get -u -v github.com/mattn/go-sqlite3
+
+
+
 ADD . /go/src/github.com/grayzone/screening
 
 WORKDIR /go/src/github.com/grayzone/screening
